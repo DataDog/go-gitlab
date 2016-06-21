@@ -44,8 +44,8 @@ type Settings struct {
 	RestrictedVisibilityLevels []VisibilityLevel `json:"restricted_visibility_levels"`
 	MaxAttachmentSize          int               `json:"max_attachment_size"`
 	SessionExpireDelay         int               `json:"session_expire_delay"`
-	DefaultProjectVisibility   int               `json:"default_project_visibility"`
-	DefaultSnippetVisibility   int               `json:"default_snippet_visibility"`
+	DefaultProjectVisibility   VisibilityLevel   `json:"default_project_visibility"`
+	DefaultSnippetVisibility   VisibilityLevel   `json:"default_snippet_visibility"`
 	RestrictedSignupDomains    []string          `json:"restricted_signup_domains"`
 	UserOauthApplications      bool              `json:"user_oauth_applications"`
 	AfterSignOutPath           string            `json:"after_sign_out_path"`
@@ -90,8 +90,8 @@ type UpdateSettingsOptions struct {
 	RestrictedVisibilityLevels []VisibilityLevel `url:"restricted_visibility_levels,omitempty" json:"restricted_visibility_levels,omitempty"`
 	MaxAttachmentSize          int               `url:"max_attachment_size,omitempty" json:"max_attachment_size,omitempty"`
 	SessionExpireDelay         int               `url:"session_expire_delay,omitempty" json:"session_expire_delay,omitempty"`
-	DefaultProjectVisibility   int               `url:"default_project_visibility,omitempty" json:"default_project_visibility,omitempty"`
-	DefaultSnippetVisibility   int               `url:"default_snippet_visibility,omitempty" json:"default_snippet_visibility,omitempty"`
+	DefaultProjectVisibility   VisibilityLevel   `url:"default_project_visibility,omitempty" json:"default_project_visibility,omitempty"`
+	DefaultSnippetVisibility   VisibilityLevel   `url:"default_snippet_visibility,omitempty" json:"default_snippet_visibility,omitempty"`
 	RestrictedSignupDomains    []string          `url:"restricted_signup_domains,omitempty" json:"restricted_signup_domains,omitempty"`
 	UserOauthApplications      bool              `url:"user_oauth_applications,omitempty" json:"user_oauth_applications,omitempty"`
 	AfterSignOutPath           string            `url:"after_sign_out_path,omitempty" json:"after_sign_out_path,omitempty"`
