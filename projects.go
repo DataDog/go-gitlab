@@ -79,8 +79,8 @@ type ProjectNamespace struct {
 }
 
 type Permissions struct {
-	ProjectAccess    *ProjectAccess `json:"project_access"`
-	GroupAccess      *GroupAccess   `json:"group_access"`
+	ProjectAccess *ProjectAccess `json:"project_access"`
+	GroupAccess   *GroupAccess   `json:"group_access"`
 }
 
 type ProjectAccess struct {
@@ -102,11 +102,11 @@ func (s Project) String() string {
 // GitLab API docs: http://doc.gitlab.com/ce/api/projects.html#list-projects
 type ListProjectsOptions struct {
 	ListOptions
-	Archived       bool   `url:"archived,omitempty" json:"archived,omitempty"`
+	Archived       *bool  `url:"archived,omitempty" json:"archived,omitempty"`
 	OrderBy        string `url:"order_by,omitempty" json:"order_by,omitempty"`
 	Sort           string `url:"sort,omitempty" json:"sort,omitempty"`
 	Search         string `url:"search,omitempty" json:"search,omitempty"`
-	CIEnabledFirst bool   `url:"ci_enabled_first,omitempty" json:"ci_enabled_first,omitempty"`
+	CIEnabledFirst *bool  `url:"ci_enabled_first,omitempty" json:"ci_enabled_first,omitempty"`
 }
 
 // ListProjects gets a list of projects accessible by the authenticated user.
@@ -168,7 +168,6 @@ func (s *ProjectsService) ListStarredProjects(
 
 	return p, resp, err
 }
-
 
 // ListAllProjects gets a list of all GitLab projects (admin only).
 //
@@ -336,11 +335,11 @@ type CreateProjectOptions struct {
 	Path                 string          `url:"path,omitempty" json:"path,omitempty"`
 	NamespaceID          string          `url:"namespace_id,omitempty" json:"namespace_id,omitempty"`
 	Description          string          `url:"description,omitempty" json:"description,omitempty"`
-	IssuesEnabled        bool            `url:"issues_enabled,omitempty" json:"issues_enabled,omitempty"`
-	MergeRequestsEnabled bool            `url:"merge_requests_enabled,omitempty" json:"merge_requests_enabled,omitempty"`
-	WikiEnabled          bool            `url:"wiki_enabled,omitempty" json:"wiki_enabled,omitempty"`
-	SnippetsEnabled      bool            `url:"snippets_enabled,omitempty" json:"snippets_enabled,omitempty"`
-	Public               bool            `url:"public,omitempty" json:"public,omitempty"`
+	IssuesEnabled        *bool           `url:"issues_enabled,omitempty" json:"issues_enabled,omitempty"`
+	MergeRequestsEnabled *bool           `url:"merge_requests_enabled,omitempty" json:"merge_requests_enabled,omitempty"`
+	WikiEnabled          *bool           `url:"wiki_enabled,omitempty" json:"wiki_enabled,omitempty"`
+	SnippetsEnabled      *bool           `url:"snippets_enabled,omitempty" json:"snippets_enabled,omitempty"`
+	Public               *bool           `url:"public,omitempty" json:"public,omitempty"`
 	VisibilityLevel      VisibilityLevel `url:"visibility_level,omitempty" json:"visibility_level,omitempty"`
 	ImportURL            string          `url:"import_url,omitempty" json:"import_url,omitempty"`
 }
@@ -373,11 +372,11 @@ type CreateProjectForUserOptions struct {
 	Name                 string          `url:"name,omitempty" json:"name,omitempty"`
 	Description          string          `url:"description,omitempty" json:"description,omitempty"`
 	DefaultBranch        string          `url:"default_branch,omitempty" json:"default_branch,omitempty"`
-	IssuesEnabled        bool            `url:"issues_enabled,omitempty" json:"issues_enabled,omitempty"`
-	MergeRequestsEnabled bool            `url:"merge_requests_enabled,omitempty" json:"merge_requests_enabled,omitempty"`
-	WikiEnabled          bool            `url:"wiki_enabled,omitempty" json:"wiki_enabled,omitempty"`
-	SnippetsEnabled      bool            `url:"snippets_enabled,omitempty" json:"snippets_enabled,omitempty"`
-	Public               bool            `url:"public,omitempty" json:"public,omitempty"`
+	IssuesEnabled        *bool           `url:"issues_enabled,omitempty" json:"issues_enabled,omitempty"`
+	MergeRequestsEnabled *bool           `url:"merge_requests_enabled,omitempty" json:"merge_requests_enabled,omitempty"`
+	WikiEnabled          *bool           `url:"wiki_enabled,omitempty" json:"wiki_enabled,omitempty"`
+	SnippetsEnabled      *bool           `url:"snippets_enabled,omitempty" json:"snippets_enabled,omitempty"`
+	Public               *bool           `url:"public,omitempty" json:"public,omitempty"`
 	VisibilityLevel      VisibilityLevel `url:"visibility_level,omitempty" json:"visibility_level,omitempty"`
 	ImportURL            string          `url:"import_url,omitempty" json:"import_url,omitempty"`
 }
@@ -414,11 +413,11 @@ type EditProjectOptions struct {
 	Path                 string          `url:"path,omitempty" json:"path,omitempty"`
 	Description          string          `url:"description,omitempty" json:"description,omitempty"`
 	DefaultBranch        string          `url:"default_branch,omitempty" json:"default_branch,omitempty"`
-	IssuesEnabled        bool            `url:"issues_enabled,omitempty" json:"issues_enabled,omitempty"`
-	MergeRequestsEnabled bool            `url:"merge_requests_enabled,omitempty" json:"merge_requests_enabled,omitempty"`
-	WikiEnabled          bool            `url:"wiki_enabled,omitempty" json:"wiki_enabled,omitempty"`
-	SnippetsEnabled      bool            `url:"snippets_enabled,omitempty" json:"snippets_enabled,omitempty"`
-	Public               bool            `url:"public,omitempty" json:"public,omitempty"`
+	IssuesEnabled        *bool           `url:"issues_enabled,omitempty" json:"issues_enabled,omitempty"`
+	MergeRequestsEnabled *bool           `url:"merge_requests_enabled,omitempty" json:"merge_requests_enabled,omitempty"`
+	WikiEnabled          *bool           `url:"wiki_enabled,omitempty" json:"wiki_enabled,omitempty"`
+	SnippetsEnabled      *bool           `url:"snippets_enabled,omitempty" json:"snippets_enabled,omitempty"`
+	Public               *bool           `url:"public,omitempty" json:"public,omitempty"`
 	VisibilityLevel      VisibilityLevel `url:"visibility_level,omitempty" json:"visibility_level,omitempty"`
 }
 
@@ -682,9 +681,9 @@ type ProjectHook struct {
 	ID                  int       `json:"id"`
 	URL                 string    `json:"url"`
 	ProjectID           int       `json:"project_id"`
-	PushEvents          bool      `json:"push_events"`
-	IssuesEvents        bool      `json:"issues_events"`
-	MergeRequestsEvents bool      `json:"merge_requests_events"`
+	PushEvents          *bool     `json:"push_events"`
+	IssuesEvents        *bool     `json:"issues_events"`
+	MergeRequestsEvents *bool     `json:"merge_requests_events"`
 	CreatedAt           time.Time `json:"created_at"`
 }
 
@@ -755,10 +754,10 @@ func (s *ProjectsService) GetProjectHook(
 // http://doc.gitlab.com/ce/api/projects.html#add-project-hook
 type AddProjectHookOptions struct {
 	URL                 string `url:"url,omitempty" json:"url,omitempty"`
-	PushEvents          bool   `url:"push_events,omitempty" json:"push_events,omitempty"`
-	IssuesEvents        bool   `url:"issues_events,omitempty" json:"issues_events,omitempty"`
-	MergeRequestsEvents bool   `url:"merge_requests_events,omitempty" json:"merge_requests_events,omitempty"`
-	TagPushEvents       bool   `url:"tag_push_events,omitempty" json:"tag_push_events,omitempty"`
+	PushEvents          *bool  `url:"push_events,omitempty" json:"push_events,omitempty"`
+	IssuesEvents        *bool  `url:"issues_events,omitempty" json:"issues_events,omitempty"`
+	MergeRequestsEvents *bool  `url:"merge_requests_events,omitempty" json:"merge_requests_events,omitempty"`
+	TagPushEvents       *bool  `url:"tag_push_events,omitempty" json:"tag_push_events,omitempty"`
 }
 
 // AddProjectHook adds a hook to a specified project.
@@ -794,10 +793,10 @@ func (s *ProjectsService) AddProjectHook(
 // http://doc.gitlab.com/ce/api/projects.html#edit-project-hook
 type EditProjectHookOptions struct {
 	URL                 string `url:"url,omitempty" json:"url,omitempty"`
-	PushEvents          bool   `url:"push_events,omitempty" json:"push_events,omitempty"`
-	IssuesEvents        bool   `url:"issues_events,omitempty" json:"issues_events,omitempty"`
-	MergeRequestsEvents bool   `url:"merge_requests_events,omitempty" json:"merge_requests_events,omitempty"`
-	TagPushEvents       bool   `url:"tag_push_events,omitempty" json:"tag_push_events,omitempty"`
+	PushEvents          *bool  `url:"push_events,omitempty" json:"push_events,omitempty"`
+	IssuesEvents        *bool  `url:"issues_events,omitempty" json:"issues_events,omitempty"`
+	MergeRequestsEvents *bool  `url:"merge_requests_events,omitempty" json:"merge_requests_events,omitempty"`
+	TagPushEvents       *bool  `url:"tag_push_events,omitempty" json:"tag_push_events,omitempty"`
 }
 
 // EditProjectHook edits a hook for a specified project.
