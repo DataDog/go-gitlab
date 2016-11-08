@@ -118,6 +118,7 @@ type Client struct {
 	Settings        *SettingsService
 	SystemHooks     *SystemHooksService
 	Users           *UsersService
+	Variables       *VariablesService
 }
 
 // ListOptions specifies the optional parameters to various List methods that
@@ -163,6 +164,7 @@ func NewClient(httpClient *http.Client, token string) *Client {
 	c.Settings = &SettingsService{client: c}
 	c.SystemHooks = &SystemHooksService{client: c}
 	c.Users = &UsersService{client: c}
+	c.Variables = &VariablesService{client: c}
 
 	return c
 }
